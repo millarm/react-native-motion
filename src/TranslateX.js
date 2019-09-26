@@ -35,11 +35,11 @@ class TranslateX extends PureComponent {
       });
     }
   }
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { value } = this.props;
 
-    if (value !== nextProps.value) {
-      this.move(nextProps.value);
+    if (value !== prevProps.value) {
+      this.move(value);
     }
   }
   move = toValue => {

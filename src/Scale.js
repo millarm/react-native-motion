@@ -34,21 +34,21 @@ class Scale extends PureComponent {
       });
     }
   }
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { value } = this.props;
 
-    if (value !== nextProps.value) {
+    if (value !== prevProps.value) {
       if (this.interaction) {
         this.interaction.cancel();
       }
 
-      if (nextProps.runAfterInteractions) {
+      if (prevProps.runAfterInteractions) {
         this.interaction = InteractionManager.runAfterInteractions(() => {
           this.interaction = null;
-          this.move(nextProps);
+          this.move(this.props);
         });
       } else {
-        this.move(nextProps);
+        this.move(this.props);
       }
     }
   }

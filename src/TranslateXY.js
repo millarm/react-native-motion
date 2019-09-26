@@ -25,11 +25,11 @@ class TranslateXY extends PureComponent {
       translateValue: new Animated.ValueXY({ x, y }),
     };
   }
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { x, y } = this.props;
 
-    if (x !== nextProps.x || y !== nextProps.y) {
-      this.move(nextProps);
+    if (x !== prevProps.x || y !== prevProps.y) {
+      this.move(this.props);
     }
   }
   move = props => {
